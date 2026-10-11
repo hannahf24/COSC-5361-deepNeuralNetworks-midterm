@@ -23,7 +23,9 @@ learningRate= 0.001
 patience= 5
 
 #load data
-classes= sorted(os.listdir(os.path.join(path, "images")))[:numClasses]
+imagesDir= os.path.join(dataPath, "images")
+classes= sorted(d for d in os.listdir(imagesDir)
+                if os.path.isdir(os.path.join(imagesDir, d)) and not d.startswith("."))[:numClasses]
 classToIdx= {classes[i]: i for i in range(len(classes))}
 print("Classes:", classes)
 
